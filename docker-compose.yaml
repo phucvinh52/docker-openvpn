@@ -1,0 +1,21 @@
+services:
+  openvpnas:
+    hostname: openvpn
+    container_name: openvpn
+    restart: always
+    image: phucvinh52/docker-openvpn:v1.0.0
+    ports:
+    - "1194:1194/udp"
+    cap_add:
+      - NET_ADMIN
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+        reservations:
+          cpus: '0.001'
+          memory: 10M
+    volumes:
+    - /home/volumes/openvpn/:/etc/openvpn
+    
